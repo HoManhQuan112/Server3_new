@@ -28,6 +28,6 @@ function getCurrentVersion(data)
 	}
 }
 
-cron.schedule('*/1 * * * * *',function(){
-	console.log("here");
-});
+// cron.schedule('*/1 * * * * *',function(){
+// 	console.log("here");
+// });
