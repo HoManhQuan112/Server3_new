@@ -1,0 +1,44 @@
+
+// {
+//   "apps": [
+//     {
+//       "name": "setSendPort",
+//       "script": "./server3_setSendPort.js",
+//       "instances": 1,
+//       "exec_mode": "cluster",
+//       "env": {
+//         "NODE_ENV": "setSend",
+//         "PORT": "1020"
+//       }
+//     }    
+//   ]
+// },
+// {
+//   "apps": [
+//     {
+//       "name": "setReceivePort",
+//       "script": "./server3_setReceivePort.js",
+//       "instances": 1,
+//       "exec_mode": "cluster",
+//       "env": {
+//         "NODE_ENV": "setReceive",
+//         "PORT": "1030"
+//       }
+//     }
+//   ]
+// }
+
+{
+  "apps": [
+    {
+      "name": "server node.js",
+      "script": "./server3.js",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "1010"
+      }
+    }
+  ]
+}
