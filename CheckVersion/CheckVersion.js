@@ -7,12 +7,15 @@ var clientVersion;
 
 exports.start = function start (io) {
 	io.on('connection', function(socket){
+		// console.log("S_CHECK_VERSION here");
 		S_CHECK_VERSION (socket);
 	});
 }
 
 function S_CHECK_VERSION(socket) {
-	socket.on('S_CHECK_VERSION', function (data){
+	// console.log("socket: ");
+	// console.log(socket);
+	socket.on('S_CHECK_VERSION', function getData(data){
 		console.log("S_CHECK_VERSION");
 		console.log(data);
 		clientVersion = getCurrentVersion(data);
@@ -22,7 +25,7 @@ function S_CHECK_VERSION(socket) {
 
 function getCurrentVersion(data)
 {
-	return currentUser =
+	return clientVersion =
 	{
 		Version :data.Version,
 	}
