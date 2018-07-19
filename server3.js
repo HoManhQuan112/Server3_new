@@ -14,10 +14,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 
 var CheckVersion 	= require('./CheckVersion/CheckVersion.js');
+CheckVersion.start(io);
 
 if (app.get('port') === "1010") {	
 	// console.log("here 1010");
-	CheckVersion.start(io);
+	
 }
 
 
