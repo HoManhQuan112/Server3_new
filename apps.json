@@ -36,7 +36,8 @@
       "instances": 1,
       "exec_mode": "cluster",
       "env": {
-        "NODE_ENV": "production",
+        "watch": true,
+        "NODE_ENV": "development",
         "PORT": "1010"
       }
     }

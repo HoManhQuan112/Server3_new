@@ -5,7 +5,7 @@ var version = 2;
 var clientVersion;
 
 
-exports.start = function start (io) {
+exports.Start = function start (io) {
 	io.on('connection', function(socket){
 		console.log("S_CHECK_VERSION here");
 		S_CHECK_VERSION (socket);
