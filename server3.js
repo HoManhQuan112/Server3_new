@@ -25,11 +25,26 @@ register.Start(io);
 // var login 			= require('./Login/Login/Login.js');
 // login.Start(io);
 
+var functions = require('./Util/Functions.js');
+
+// var GetTimeUTC = funtions.GetTimeUTC("Aug 01 2018 11:42:01");
+// console.log("testTime");
+// console.log(GetTimeUTC);
+
+// var GetTimeUTC = funtions.GetTimeUTC("Aug 01 2018 11:42:01");
+// console.log("testTime");
+// console.log(GetTimeUTC);
+
+var getUTC = functions.GetTimeUTC_string();
+console.log("getUTC");
+console.log(getUTC);
+
 if (app.get('port') === "1010") {	
 	// console.log(database.Database_s3_user);
-	console.log("thời gian server hiện tại: "+datetime.create().format('H:M:S d-m-Y')+" "+ new Date().toString().slice(25, 33));	
+	// console.log("thời gian server hiện tại: "+datetime.create().format('H:M:S d-m-Y')+" "+ new Date().toString().slice(25, 33));	
+	
+	// console.log(datetime.create());
 }
-
 
 
 

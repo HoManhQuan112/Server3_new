@@ -1,5 +1,5 @@
 'use strict';
-var database		= require('./../../Util/db_s3.js');
+var database		= require('./../../Util/Db_s3.js');
 // var sendMail 		= require('./../../Util/sendMail.js');
 // var functions 		= require('./../../Util/functions.js');
 // var userBase		= require('./../../UserBase/userBase.js');
