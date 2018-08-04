@@ -1,4 +1,6 @@
 'use strict';
+const   fs          = require('fs');
+var datetime        = require('node-datetime');
 
 exports.GetTimeNow = function getTimeNow(dateString) {
    var retString = new Date(dateString).toString().slice(4,25);
@@ -12,7 +14,12 @@ exports.GetTime_int = function (dateString) {
     var retInt = new Date(dateString).getTime();
     return retInt;     
 }
-
+exports.WriteLogError = function(detailError){
+    console.log(detailError);
+    fs.appendFile('./LogError/LogError.txt', "\r\n"+ datetime.create().format('H:M:S d-m-Y')+" \r\n"+ new Date().toString().slice(25, 33)+" "+detailError, (err) => {
+        if (err) throw err;
+    });
+}
 
 // 'use strict';
 // const   fs          = require('fs');
@@ -22,7 +29,7 @@ exports.GetTime_int = function (dateString) {
 // var Promise         = require('promise');
 // const nodemailer    = require('nodemailer');
 // var sqrt            = require( 'math-sqrt');
-// var datetime        = require('node-datetime');
+
 
 
 

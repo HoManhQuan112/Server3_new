@@ -21,19 +21,6 @@ var database_s3_user    =    mysql.createPool({
   charset            : db_charset,
 });
 
-var database_s3_basedefend    =    mysql.createPool({
- connectionLimit    : db_connectionLimit,
- host               : db_host,
- user               : db_user,
- password           : db_password,
- database           : 's3_basedefend',
- debug              : db_debug,
- multipleStatements : db_multipleStatements,
- charset            : db_charset,
-});
-
-
-
 
 database_s3_user.on('connection', function(connection) {
  console.log('Connection established');
@@ -45,18 +32,8 @@ database_s3_user.on('connection', function(connection) {
 });
 });
 
-database_s3_basedefend.on('connection', function(connection) {
- console.log('Connection established');
- connection.on('error', function(err) {
-  console.error(new Date(), 'MySQL error', err.code);
-});
- connection.on('close', function(err) {
-  console.error(new Date(), 'MySQL close', err);
-});
-});
-
 module.exports = database_s3_user;
-module.exports = database_s3_basedefend;
+
 // exports.Database_s3_user          = database_s3_user;
 // exports.Database_s3_basedefend    = database_s3_basedefend;
 // var Database_s3_user    =    mysql.createPool({

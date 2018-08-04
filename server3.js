@@ -14,18 +14,18 @@ server.listen(process.env.PORT);
 io.sockets.setMaxListeners(0);
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-var database = require('./Util/db_s3.js');
+var database = require('./Util/Db_s3.js');
 
 var checkVersion 	= require('./CheckVersion/CheckVersion.js');
 checkVersion.Start(io);
 
-var register 		= require('./Login/Register/Register.js');
-register.Start(io);
+// var register 		= require('./Login/Register/Register.js');
+// register.Start(io);
 
 // var login 			= require('./Login/Login/Login.js');
 // login.Start(io);
 
-var functions = require('./Util/Functions.js');
+// var functions = require('./Util/Functions.js');
 
 // var GetTimeUTC = funtions.GetTimeUTC("Aug 01 2018 11:42:01");
 // console.log("testTime");
@@ -35,11 +35,15 @@ var functions = require('./Util/Functions.js');
 // console.log("testTime");
 // console.log(GetTimeUTC);
 
-var getUTC = functions.GetTimeUTC_string();
-console.log("getUTC");
-console.log(getUTC);
-
+// var getUTC = functions.GetTimeUTC_string();
+// console.log("getUTC");
+// console.log(getUTC);
+var register 		= require('./Login/Register/Register.js');
+	register.Start(io);
+	
 if (app.get('port') === "1010") {	
+
+
 	// console.log(database.Database_s3_user);
 	// console.log("thời gian server hiện tại: "+datetime.create().format('H:M:S d-m-Y')+" "+ new Date().toString().slice(25, 33));	
 	
