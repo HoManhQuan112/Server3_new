@@ -1,9 +1,12 @@
 'use strict';
-var db_user		= require('./../../Util/Database/Db_s3_user.js');
-// var sendMail 		= require('./../../Util/sendMail.js');
-var functions 		= require('./../../Util/Functions.js');
-// var userBase		= require('./../../UserBase/userBase.js');
 
+var updateDatabaseUser	= require('./UpdateDatabaseUser');
+var functions 			= require('./../../Util/Functions.js');
+var db_user				= require('./../../Util/Database/Db_s3_user.js');
+var db_all_user				= require('./../../Util/Database/Db_all_user.js');
+
+// var userBase		= require('./../../UserBase/userBase.js');
+// var sendMail 		= require('./../../Util/sendMail.js');
 var currentUser,DetailError;
 
 exports.Start = function start (io) {
@@ -22,20 +25,54 @@ function S_REGISTER (socket,data) {
 	// var queryString = "SELECT * FROM `users`"
 	db_user.query(queryString,function(error,rows){
 		if (!!error){DetailError = ('Register: S_REGISTER queryUser :'+ data.UserName); functions.WriteLogError(DetailError);}
-		if (rows==undefined||rows.length==0) {
+		if (rows==undefined) {
 			createUser(socket,data);
 		}else{
 			R_REGISTER(socket,0);
-		}
-	
-		
+		}		
 	});
 }
 function createUser(socket,data) {
+	var stringInsert_AllUser = "INSERT INTO `all_user`(`UserName`, `Password`, `Email`, `NameInGame`,`DateCreate`, `DateCreate_int`) VALUES ("
+	+data.UserName+","
+	+data.Password+","
+	+data.Email+","
+	+data.UserName+","
+	+functions.GetTimeUTC_string()+","
+	+functions.GetTimeNow(functions.GetTimeNow_int(functions.GetTimeUTC_string()))+")";
+
+	var stringInsert = "INSERT INTO `users`(`UserName`, `Password`, `Email`, `NameInGame`,`DateCreate`, `DateCreate_int`) VALUES ("
+	+data.UserName+","
+	+data.Password+","
+	+data.Email+","
+	+data.UserName+","
+	+functions.GetTimeUTC_string()+","
+	+functions.GetTimeNow(functions.GetTimeNow_int(functions.GetTimeUTC_string()))+")";
+	
+	console.log(stringInsert);
+
+	db_user.query(stringInsert,function(error,resultsInsert){	
+		if (!!error){DetailError = ('Register: stringInsert  :'+ data.UserName); functions.WriteLogError(DetailError);}
+	});
+
+
+	
+	console.log(stringInsert);
+
+	db_user.query(stringInsert,function(error,resultsInsert){	
+		if (!!error){DetailError = ('Register: stringInsert  :'+ data.UserName); functions.WriteLogError(DetailError);}
+	});
+
+
 	R_REGISTER(socket,1);
+
+
 }
 function R_REGISTER(socket,boolSuccess){
 	socket.emit('R_REGISTER',{Message : boolSuccess});
+}
+function insertNewUserDatabase(argument) {
+	// body...
 }
 // function getCurrentUser(data)
 // {

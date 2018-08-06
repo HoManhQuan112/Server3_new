@@ -3,14 +3,15 @@ const   fs          = require('fs');
 var datetime        = require('node-datetime');
 
 exports.GetTimeNow = function getTimeNow(dateString) {
-   var retString = new Date(dateString).toString().slice(4,25);
+   var retString = new Date(dateString).toString();
    return retString;     
 }
 exports.GetTimeUTC_string = function () {
     var retUTC = new Date().toUTCString().slice(5, 26);
     return retUTC;
 }
-exports.GetTime_int = function (dateString) {
+
+exports.GetTimeNow_int = function (dateString) {
     var retInt = new Date(dateString).getTime();
     return retInt;     
 }

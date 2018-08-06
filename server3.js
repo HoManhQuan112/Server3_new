@@ -25,19 +25,7 @@ checkVersion.Start(io);
 // var login 			= require('./Login/Login/Login.js');
 // login.Start(io);
 
-// var functions = require('./Util/Functions.js');
 
-// var GetTimeUTC = funtions.GetTimeUTC("Aug 01 2018 11:42:01");
-// console.log("testTime");
-// console.log(GetTimeUTC);
-
-// var GetTimeUTC = funtions.GetTimeUTC("Aug 01 2018 11:42:01");
-// console.log("testTime");
-// console.log(GetTimeUTC);
-
-// var getUTC = functions.GetTimeUTC_string();
-// console.log("getUTC");
-// console.log(getUTC);
 var register 		= require('./Login/Register/Register.js');
 	register.Start(io);
 	
@@ -50,8 +38,23 @@ if (app.get('port') === "1010") {
 	// console.log(datetime.create());
 }
 
+var testRegion 		= test();
+var db_user 		= require('./Util/Database/Db_s3_user.js');
+var db_basedefend 	= require('./Util/Database/Db_s3_baseDefend.js');
 
+function test() {
+	
+var stringQuery ="SELECT * FROM `users` WHERE `UserName`="+data.UserName;
+	console.log(stringQuery);
+	db_user.query(stringQuery,function (error,rows) {
+		if (!!error){DetailError = ('UpdateDatabaseUser: updateDatabaseNewUser  :'+ data.UserName); functions.WriteLogError(DetailError);}
+		if (rows.length>0) {
+			console.log(rows);
+			
+		}
 
+	});
+}
 
 // var database 		= require('./Util/db.js');
 // var functions       = require('./Util/functions.js');
